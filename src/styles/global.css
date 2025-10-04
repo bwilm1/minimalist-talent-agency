@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply transition-colors duration-300;
+    }
+
+    html {
+        @apply antialiased;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-white text-black font-sans;
+        cursor: none !important;
+    }
+
+    * {
+        cursor: none !important;
+    }
+
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: none !important;
+    }
+
+    ::selection {
+        @apply bg-black text-white;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply relative inline-block px-8 py-4 text-sm tracking-widest uppercase overflow-hidden;
+        @apply border border-black;
+        @apply hover:bg-black hover:text-white;
+    }
+
+    .btn-accent {
+        @apply border-accent text-accent;
+        @apply hover:bg-accent hover:text-white;
+    }
+
+    .section-padding {
+        @apply px-6 md:px-12 lg:px-20 py-20 md:py-32 lg:py-40;
+    }
+
+    .heading-xl {
+        @apply font-display font-bold text-hero leading-none tracking-tight;
+    }
+
+    .heading-lg {
+        @apply font-display font-bold text-display leading-none tracking-tight;
+    }
+
+    .text-body {
+        @apply text-base md:text-lg leading-relaxed;
+    }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+}
+
+.custom-cursor.hover {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 107, 53, 0.5);
+    border-color: #FF6B35;
+    border-width: 3px;
+}
+
+/* Loading Animation */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+/* Smooth Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: reveal-animation 0.8s ease forwards;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+@keyframes reveal-animation {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Image Hover Effects */
+.img-hover-container {
+    @apply relative overflow-hidden;
+}
+
+.img-hover-container img {
+    @apply transition-transform duration-700 ease-out;
+}
+
+.img-hover-container:hover img {
+    @apply scale-110;
+}
+
+/* Line Animations */
+.line-draw {
+    position: relative;
+    overflow: hidden;
+}
+
+.line-draw::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.line-draw:hover::after {
+    transform: scaleX(1);
+}
+
+/* Grid Lines */
+.grid-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+}
+
+.grid-lines::before,
+.grid-lines::after {
+    content: '';
+    position: absolute;
+    background: black;
+}
+
+.grid-lines::before {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    transform: translateX(-50%);
+}
+
+.grid-lines::after {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+/* Parallax */
+.parallax {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Marquee */
+.marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: 2rem;
+}
+
+.marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    gap: 2rem;
+    min-width: 100%;
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

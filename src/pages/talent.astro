@@ -1,0 +1,211 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const talents = [
+    {
+        id: "sophia-chen",
+        name: "Sophia Chen",
+        category: "Actor",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
+        featured: true,
+    },
+    {
+        id: "marcus-williams",
+        name: "Marcus Williams",
+        category: "Model",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80",
+        featured: true,
+    },
+    {
+        id: "elena-rodriguez",
+        name: "Elena Rodriguez",
+        category: "Creative",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80",
+        featured: true,
+    },
+    {
+        id: "james-anderson",
+        name: "James Anderson",
+        category: "Director",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+        featured: false,
+    },
+    {
+        id: "mia-zhang",
+        name: "Mia Zhang",
+        category: "Model",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80",
+        featured: false,
+    },
+    {
+        id: "david-kumar",
+        name: "David Kumar",
+        category: "Actor",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80",
+        featured: false,
+    },
+    {
+        id: "isabella-martinez",
+        name: "Isabella Martinez",
+        category: "Creative",
+        image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&q=80",
+        featured: false,
+    },
+    {
+        id: "alex-thompson",
+        name: "Alex Thompson",
+        category: "Director",
+        image: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=800&q=80",
+        featured: false,
+    },
+    {
+        id: "nina-patel",
+        name: "Nina Patel",
+        category: "Model",
+        image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80",
+        featured: false,
+    },
+];
+---
+
+<Layout title="Talent Roster - Cipher Agency">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="heading-xl mb-8 reveal">
+                OUR<br />TALENT
+            </h1>
+            <p
+                class="text-xl md:text-2xl text-gray-600 max-w-2xl reveal"
+                style="animation-delay: 0.2s;"
+            >
+                A curated collective of visionaries, storytellers, and creators
+                redefining their industries.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="px-6 md:px-12 lg:px-20 pb-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap gap-4" id="filter-container">
+                <button class="filter-btn active" data-filter="all">
+                    All
+                </button>
+                <button class="filter-btn" data-filter="Actor"> Actors </button>
+                <button class="filter-btn" data-filter="Model"> Models </button>
+                <button class="filter-btn" data-filter="Creative">
+                    Creatives
+                </button>
+                <button class="filter-btn" data-filter="Director">
+                    Directors
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talent Grid -->
+    <section class="px-6 md:px-12 lg:px-20 pb-32">
+        <div class="max-w-7xl mx-auto">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                id="talent-grid"
+            >
+                {
+                    talents.map((talent, index) => (
+                        <a
+                            href={`/talent/${talent.id}`}
+                            class="talent-card group reveal"
+                            data-category={talent.category}
+                            style={`animation-delay: ${index * 0.1}s;`}
+                        >
+                            <div class="img-hover-container aspect-[3/4] mb-6 relative overflow-hidden">
+                                <img
+                                    src={talent.image}
+                                    alt={talent.name}
+                                    class="w-full h-full object-cover"
+                                    loading="lazy"
+                                />
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+                                <div class="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <span class="text-white text-sm tracking-widest uppercase">
+                                        View Profile
+                                    </span>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold mb-2 group-hover:text-accent transition-colors">
+                                {talent.name}
+                            </h3>
+                            <p class="text-sm tracking-widest uppercase text-gray-600">
+                                {talent.category}
+                            </p>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtering Script -->
+    <script>
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const talentCards = document.querySelectorAll(".talent-card");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const filter = button.getAttribute("data-filter");
+
+                // Update active button
+                filterButtons.forEach((btn) => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                // Filter cards
+                talentCards.forEach((card, index) => {
+                    const category = card.getAttribute("data-category");
+
+                    if (filter === "all" || category === filter) {
+                        card.style.display = "block";
+                        setTimeout(() => {
+                            card.classList.add("active");
+                        }, index * 50);
+                    } else {
+                        card.style.display = "none";
+                        card.classList.remove("active");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- GSAP Animations -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Stagger animation for talent cards
+        gsap.from(".talent-card", {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#talent-grid",
+                start: "top 80%",
+            },
+        });
+    </script>
+
+    <style>
+        .filter-btn {
+            @apply px-6 py-3 text-sm tracking-widest uppercase border border-gray-300 
+             hover:border-black hover:bg-black hover:text-white transition-all duration-300;
+        }
+
+        .filter-btn.active {
+            @apply bg-black text-white border-black;
+        }
+    </style>
+</Layout>

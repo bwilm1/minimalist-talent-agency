@@ -1,0 +1,460 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+    return [
+        { params: { id: "sophia-chen" } },
+        { params: { id: "marcus-williams" } },
+        { params: { id: "elena-rodriguez" } },
+        { params: { id: "james-anderson" } },
+        { params: { id: "mia-zhang" } },
+        { params: { id: "david-kumar" } },
+        { params: { id: "isabella-martinez" } },
+        { params: { id: "alex-thompson" } },
+        { params: { id: "nina-patel" } },
+    ];
+}
+
+const { id } = Astro.params;
+
+// Mock talent data
+const talentData: Record<string, any> = {
+    "sophia-chen": {
+        name: "Sophia Chen",
+        role: "Actor & Director",
+        tagline: "Redefining storytelling through authentic performance",
+        bio: "Sophia Chen is an award-winning actor and director known for her compelling performances and visionary approach to filmmaking. With a career spanning over a decade, she has worked with acclaimed directors and brought complex characters to life on screen.",
+        stats: [
+            { label: "Films", value: "28" },
+            { label: "Awards", value: "12" },
+            { label: "Years Active", value: "10+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=80",
+            "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
+            "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=1200&q=80",
+            "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80",
+        ],
+        credits: [
+            { title: "The Silent Echo", year: "2023", role: "Lead Actor" },
+            { title: "Midnight in Paris", year: "2022", role: "Director" },
+            { title: "Digital Dreams", year: "2021", role: "Lead Actor" },
+        ],
+    },
+    "marcus-williams": {
+        name: "Marcus Williams",
+        role: "Model & Creative Director",
+        tagline: "Pushing boundaries in fashion and visual arts",
+        bio: "Marcus Williams has graced the covers of major fashion magazines and walked runways for top designers worldwide. Beyond modeling, he has evolved into a sought-after creative director, bringing his unique vision to editorial shoots and brand campaigns.",
+        stats: [
+            { label: "Campaigns", value: "45+" },
+            { label: "Magazines", value: "20" },
+            { label: "Years Active", value: "8+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80",
+            "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80",
+            "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
+        ],
+        credits: [
+            { title: "Vogue Italia", year: "2023", role: "Cover Model" },
+            {
+                title: "Louis Vuitton Campaign",
+                year: "2023",
+                role: "Creative Director",
+            },
+            { title: "GQ Style", year: "2022", role: "Featured Model" },
+        ],
+    },
+    "elena-rodriguez": {
+        name: "Elena Rodriguez",
+        role: "Photographer & Visual Artist",
+        tagline: "Capturing moments that transcend time",
+        bio: "Elena Rodriguez is a celebrated photographer whose work explores themes of identity, culture, and human connection. Her distinctive style has been featured in galleries worldwide and commissioned by prestigious brands and publications.",
+        stats: [
+            { label: "Exhibitions", value: "30+" },
+            { label: "Publications", value: "50+" },
+            { label: "Years Active", value: "12+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+            "https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "National Geographic",
+                year: "2023",
+                role: "Featured Photographer",
+            },
+            {
+                title: "The New York Times",
+                year: "2022",
+                role: "Contributing Photographer",
+            },
+            { title: "Solo Exhibition - MoMA", year: "2021", role: "Artist" },
+        ],
+    },
+    "james-anderson": {
+        name: "James Anderson",
+        role: "Film Director",
+        tagline: "Crafting cinematic experiences that resonate",
+        bio: "James Anderson is a visionary director whose films have garnered critical acclaim at international festivals. Known for his bold storytelling and innovative visual style, he brings depth and emotion to every project he undertakes.",
+        stats: [
+            { label: "Films Directed", value: "15" },
+            { label: "Festival Awards", value: "8" },
+            { label: "Years Active", value: "12+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1200&q=80",
+            "https://images.unsplash.com/photo-1608889335941-32ac5f2041b9?w=1200&q=80",
+            "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80",
+            "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=1200&q=80",
+        ],
+        credits: [
+            { title: "Echoes of Tomorrow", year: "2023", role: "Director" },
+            { title: "The Last Summer", year: "2022", role: "Director/Writer" },
+            { title: "Urban Legends", year: "2021", role: "Director" },
+        ],
+    },
+    "mia-zhang": {
+        name: "Mia Zhang",
+        role: "Fashion Model",
+        tagline: "Redefining beauty standards worldwide",
+        bio: "Mia Zhang has become one of the most sought-after faces in high fashion. Her striking presence and versatility have made her a favorite among top designers and photographers, appearing in campaigns for the world's most prestigious brands.",
+        stats: [
+            { label: "Fashion Shows", value: "120+" },
+            { label: "Magazine Covers", value: "35" },
+            { label: "Years Active", value: "6+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80",
+            "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80",
+            "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200&q=80",
+            "https://images.unsplash.com/photo-1509319117730-cd6d3b1c00d4?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "Chanel Resort Collection",
+                year: "2024",
+                role: "Lead Model",
+            },
+            { title: "Vogue China Cover", year: "2023", role: "Cover Model" },
+            { title: "Dior Campaign", year: "2023", role: "Brand Ambassador" },
+        ],
+    },
+    "david-kumar": {
+        name: "David Kumar",
+        role: "Stage & Screen Actor",
+        tagline: "Bringing authenticity to every performance",
+        bio: "David Kumar is a versatile actor whose work spans theater, television, and film. His powerful performances and emotional depth have earned him recognition across multiple platforms, making him one of the industry's most respected talents.",
+        stats: [
+            { label: "Performances", value: "50+" },
+            { label: "Theater Awards", value: "5" },
+            { label: "Years Active", value: "9+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1503095396549-807759245b35?w=1200&q=80",
+            "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200&q=80",
+            "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80",
+            "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "Broadway: Hamilton Revival",
+                year: "2023",
+                role: "Lead Role",
+            },
+            {
+                title: "The Crown (Netflix)",
+                year: "2022",
+                role: "Supporting Actor",
+            },
+            {
+                title: "Royal Shakespeare Company",
+                year: "2021",
+                role: "Hamlet",
+            },
+        ],
+    },
+    "isabella-martinez": {
+        name: "Isabella Martinez",
+        role: "Creative Director & Stylist",
+        tagline: "Where artistry meets innovation",
+        bio: "Isabella Martinez is a creative force in fashion and visual storytelling. Her work as a creative director and stylist has shaped campaigns for global brands, blending contemporary aesthetics with timeless elegance.",
+        stats: [
+            { label: "Campaigns", value: "60+" },
+            { label: "Brand Partnerships", value: "25" },
+            { label: "Years Active", value: "11+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80",
+            "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80",
+            "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "Balenciaga Campaign",
+                year: "2023",
+                role: "Creative Director",
+            },
+            {
+                title: "Harper's Bazaar Editorial",
+                year: "2023",
+                role: "Fashion Stylist",
+            },
+            {
+                title: "Gucci Cruise Collection",
+                year: "2022",
+                role: "Creative Consultant",
+            },
+        ],
+    },
+    "alex-thompson": {
+        name: "Alex Thompson",
+        role: "Documentary Filmmaker",
+        tagline: "Telling stories that matter",
+        bio: "Alex Thompson is an award-winning documentary filmmaker whose work explores social issues and human stories. With a keen eye for truth and compassion, Alex creates films that inspire dialogue and drive change.",
+        stats: [
+            { label: "Documentaries", value: "12" },
+            { label: "Festival Selections", value: "40+" },
+            { label: "Years Active", value: "10+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+            "https://images.unsplash.com/photo-1495837174058-628aafc7d610?w=1200&q=80",
+            "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "Voices Unheard",
+                year: "2023",
+                role: "Director/Producer",
+            },
+            { title: "The Climate Diaries", year: "2022", role: "Director" },
+            {
+                title: "Sundance Film Festival",
+                year: "2021",
+                role: "Award Winner",
+            },
+        ],
+    },
+    "nina-patel": {
+        name: "Nina Patel",
+        role: "Editorial Model & Influencer",
+        tagline: "Authenticity in every frame",
+        bio: "Nina Patel has carved a unique space in fashion as both an editorial model and influential voice in sustainable fashion. Her commitment to authentic representation and conscious lifestyle has made her a role model for a new generation.",
+        stats: [
+            { label: "Campaigns", value: "80+" },
+            { label: "Social Reach", value: "2M+" },
+            { label: "Years Active", value: "7+" },
+        ],
+        images: [
+            "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&q=80",
+            "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&q=80",
+            "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=1200&q=80",
+            "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80",
+        ],
+        credits: [
+            {
+                title: "Stella McCartney Campaign",
+                year: "2023",
+                role: "Brand Ambassador",
+            },
+            {
+                title: "Elle Magazine Feature",
+                year: "2023",
+                role: "Cover Model",
+            },
+            {
+                title: "Sustainable Fashion Week",
+                year: "2022",
+                role: "Guest Speaker",
+            },
+        ],
+    },
+};
+
+// Default to first talent if ID not found
+const talent = talentData[id] || talentData["sophia-chen"];
+---
+
+<Layout title={`${talent.name} - Cipher Agency`}>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+            <a
+                href="/talent"
+                class="inline-flex items-center gap-2 text-sm tracking-widest uppercase mb-8 hover:text-accent transition-colors"
+            >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                </svg>
+                Back to Roster
+            </a>
+
+            <h1 class="heading-xl mb-6 reveal">
+                {talent.name.split(" ")[0]}<br />{talent.name.split(" ")[1]}
+            </h1>
+            <p
+                class="text-2xl md:text-3xl text-gray-600 mb-4 reveal"
+                style="animation-delay: 0.2s;"
+            >
+                {talent.role}
+            </p>
+            <p
+                class="text-xl text-accent italic reveal"
+                style="animation-delay: 0.3s;"
+            >
+                "{talent.tagline}"
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="px-6 md:px-12 lg:px-20 pb-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-3 gap-8 py-12 border-y border-gray-200">
+                {
+                    talent.stats.map((stat: any, index: number) => (
+                        <div
+                            class="text-center reveal"
+                            style={`animation-delay: ${index * 0.1}s;`}
+                        >
+                            <div class="text-5xl md:text-6xl font-display font-bold mb-2">
+                                {stat.value}
+                            </div>
+                            <div class="text-sm tracking-widest uppercase text-gray-600">
+                                {stat.label}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="px-6 md:px-12 lg:px-20 pb-20">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 reveal">
+                About
+            </h2>
+            <p
+                class="text-xl leading-relaxed text-gray-700 reveal"
+                style="animation-delay: 0.2s;"
+            >
+                {talent.bio}
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="px-6 md:px-12 lg:px-20 pb-20">
+        <div class="max-w-7xl mx-auto">
+            <h2
+                class="text-4xl md:text-5xl font-display font-bold mb-12 reveal"
+            >
+                Portfolio
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {
+                    talent.images.map((image: string, index: number) => (
+                        <div
+                            class="img-hover-container aspect-[4/5] reveal"
+                            style={`animation-delay: ${index * 0.1}s;`}
+                        >
+                            <img
+                                src={image}
+                                alt={`${talent.name} - Image ${index + 1}`}
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <section
+        class="px-6 md:px-12 lg:px-20 pb-32 bg-black text-white -mx-6 md:-mx-12 lg:-mx-20"
+    >
+        <div class="max-w-4xl mx-auto section-padding">
+            <h2
+                class="text-4xl md:text-5xl font-display font-bold mb-12 reveal"
+            >
+                Selected Work
+            </h2>
+
+            <div class="space-y-8">
+                {
+                    talent.credits.map((credit: any, index: number) => (
+                        <div
+                            class="flex flex-col md:flex-row md:items-center justify-between py-6 border-b border-gray-800 reveal"
+                            style={`animation-delay: ${index * 0.1}s;`}
+                        >
+                            <div>
+                                <h3 class="text-2xl font-display font-bold mb-2">
+                                    {credit.title}
+                                </h3>
+                                <p class="text-gray-400">{credit.role}</p>
+                            </div>
+                            <div class="text-accent text-xl font-display font-bold mt-4 md:mt-0">
+                                {credit.year}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-white text-center">
+        <div class="max-w-3xl mx-auto reveal">
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">
+                Interested in Working<br />with {talent.name.split(" ")[0]}?
+            </h2>
+            <p class="text-xl text-gray-600 mb-12">
+                Contact us to discuss collaboration opportunities and
+                availability.
+            </p>
+            <a href="/contact" class="btn btn-accent"> Get in Touch </a>
+        </div>
+    </section>
+
+    <!-- GSAP Animations -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Gallery grid animation
+        gsap.from(".grid img", {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".grid",
+                start: "top 70%",
+            },
+        });
+    </script>
+</Layout>

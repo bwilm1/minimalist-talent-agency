@@ -1,0 +1,284 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const team = [
+    {
+        name: "Victoria Chen",
+        role: "Founder & CEO",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
+        bio: "15+ years shaping careers in entertainment and fashion.",
+    },
+    {
+        name: "Michael Torres",
+        role: "Creative Director",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+        bio: "Visionary strategist with a passion for authentic storytelling.",
+    },
+    {
+        name: "Sarah Kim",
+        role: "Talent Director",
+        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80",
+        bio: "Connecting exceptional talent with groundbreaking opportunities.",
+    },
+    {
+        name: "James Rodriguez",
+        role: "Business Development",
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&q=80",
+        bio: "Building partnerships that elevate brands and artists alike.",
+    },
+];
+---
+
+<Layout title="About - Cipher Agency">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 md:px-12 lg:px-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="heading-xl mb-12 reveal">
+                REDEFINING<br />REPRESENTATION
+            </h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="reveal" style="animation-delay: 0.2s;">
+                    <p class="text-xl md:text-2xl leading-relaxed mb-6">
+                        Founded in 2004, Cipher Agency emerged from a simple
+                        belief: exceptional talent deserves exceptional
+                        representation.
+                    </p>
+                    <p class="text-lg text-gray-400 leading-relaxed">
+                        We've built our reputation on integrity, innovation, and
+                        an unwavering commitment to our clients' success. Our
+                        boutique approach ensures personalized attention while
+                        our industry expertise opens doors to the most
+                        prestigious opportunities.
+                    </p>
+                </div>
+                <div class="reveal" style="animation-delay: 0.4s;">
+                    <p class="text-lg text-gray-400 leading-relaxed mb-6">
+                        From emerging artists to established icons, we curate a
+                        roster that reflects diversity, creativity, and
+                        excellence. Our team doesn't just manage careers—we
+                        shape cultural moments and build lasting legacies.
+                    </p>
+                    <div class="w-20 h-1 bg-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="heading-lg mb-20 text-center reveal">OUR VALUES</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="reveal text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-8 border-2 border-black rounded-full flex items-center justify-center"
+                    >
+                        <span class="text-2xl font-display font-bold">01</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-4">
+                        Excellence
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We pursue perfection in every detail, from contract
+                        negotiations to creative partnerships.
+                    </p>
+                </div>
+
+                <div class="reveal text-center" style="animation-delay: 0.2s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-8 border-2 border-black rounded-full flex items-center justify-center"
+                    >
+                        <span class="text-2xl font-display font-bold">02</span>
+                    </div>
+                    <h3
+                        class="text-2xl font-display font-bold mb-4 text-center"
+                    >
+                        Integrity
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed text-center">
+                        Trust is the foundation of every relationship we build,
+                        with clients and partners alike.
+                    </p>
+                </div>
+
+                <div class="reveal text-center" style="animation-delay: 0.4s;">
+                    <div
+                        class="w-16 h-16 mx-auto mb-8 border-2 border-black rounded-full flex items-center justify-center"
+                    >
+                        <span class="text-2xl font-display font-bold">03</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-4">
+                        Innovation
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We stay ahead of industry trends, constantly evolving
+                        our approach to representation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section-padding bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="heading-lg mb-20 reveal">MEET THE TEAM</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {
+                    team.map((member, index) => (
+                        <div
+                            class="reveal"
+                            style={`animation-delay: ${index * 0.1}s;`}
+                        >
+                            <div class="img-hover-container aspect-[3/4] mb-6">
+                                <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                    loading="lazy"
+                                />
+                            </div>
+                            <h3 class="text-xl font-display font-bold mb-2">
+                                {member.name}
+                            </h3>
+                            <p class="text-sm tracking-widest uppercase text-accent mb-3">
+                                {member.role}
+                            </p>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                {member.bio}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="heading-lg mb-20 text-center reveal">OUR JOURNEY</h2>
+
+            <div class="space-y-16">
+                <div class="reveal flex gap-8 items-start">
+                    <div
+                        class="text-4xl font-display font-bold text-accent min-w-[100px]"
+                    >
+                        2004
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-3">
+                            The Beginning
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Cipher Agency founded in New York City with a vision
+                            to transform talent representation.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="reveal flex gap-8 items-start"
+                    style="animation-delay: 0.2s;"
+                >
+                    <div
+                        class="text-4xl font-display font-bold text-accent min-w-[100px]"
+                    >
+                        2010
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-3">
+                            Expansion
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Opened Los Angeles office and expanded into
+                            international markets.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="reveal flex gap-8 items-start"
+                    style="animation-delay: 0.4s;"
+                >
+                    <div
+                        class="text-4xl font-display font-bold text-accent min-w-[100px]"
+                    >
+                        2015
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-3">
+                            Recognition
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Named Top Boutique Agency by Industry Magazine for
+                            innovative approach.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="reveal flex gap-8 items-start"
+                    style="animation-delay: 0.6s;"
+                >
+                    <div
+                        class="text-4xl font-display font-bold text-accent min-w-[100px]"
+                    >
+                        2024
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-display font-bold mb-3">
+                            Today
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Representing 150+ exceptional artists across
+                            entertainment, fashion, and creative industries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-black text-white text-center">
+        <div class="max-w-3xl mx-auto reveal">
+            <h2 class="heading-lg mb-8">
+                JOIN OUR<br />COLLECTIVE
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                Are you a visionary artist or creative professional? We're
+                always looking to connect with exceptional talent.
+            </p>
+            <a
+                href="/contact"
+                class="btn text-white border-white hover:bg-white hover:text-black"
+            >
+                Get in Touch
+            </a>
+        </div>
+    </section>
+
+    <!-- GSAP Animations -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Timeline animations
+        gsap.from(".space-y-16 > div", {
+            x: -50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".space-y-16",
+                start: "top 70%",
+            },
+        });
+    </script>
+</Layout>

@@ -1,0 +1,316 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Cipher Agency - Premier Talent Representation">
+    <!-- Hero Section -->
+    <section
+        class="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+        <div class="absolute inset-0 bg-black">
+            <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1920&q=80"
+                alt="Hero"
+                class="w-full h-full object-cover opacity-40"
+            />
+        </div>
+
+        <div class="relative z-10 text-center text-white px-6">
+            <h1 class="heading-xl mb-8 reveal">
+                DEFINING<br />EXCELLENCE
+            </h1>
+            <p
+                class="text-xl md:text-2xl tracking-wider uppercase reveal"
+                style="animation-delay: 0.2s;"
+            >
+                Premier Talent Representation
+            </p>
+        </div>
+
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 text-white">
+            <div class="flex flex-col items-center animate-bounce">
+                <span class="text-xs tracking-widest uppercase mb-2"
+                    >Scroll</span
+                >
+                <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section class="section-padding bg-white">
+        <div
+            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+        >
+            <div class="reveal">
+                <h2 class="heading-lg mb-8">
+                    WE ELEVATE<br />VISIONARIES
+                </h2>
+                <div class="w-20 h-1 bg-accent mb-8"></div>
+                <p class="text-body text-gray-700 mb-6">
+                    At Cipher Agency, we don't just represent talent—we
+                    cultivate legacies. Our boutique approach combines industry
+                    expertise with artistic sensibility, ensuring every client
+                    receives the attention and strategy they deserve.
+                </p>
+                <p class="text-body text-gray-700">
+                    We believe in the power of authentic storytelling, strategic
+                    positioning, and unwavering dedication to our artists'
+                    vision. This is more than representation; it's partnership.
+                </p>
+            </div>
+
+            <div
+                class="reveal grid grid-cols-2 gap-8"
+                style="animation-delay: 0.2s;"
+            >
+                <div class="text-center">
+                    <div
+                        class="text-6xl md:text-7xl font-display font-bold mb-2"
+                    >
+                        150+
+                    </div>
+                    <div
+                        class="text-sm tracking-widest uppercase text-gray-600"
+                    >
+                        Represented Artists
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="text-6xl md:text-7xl font-display font-bold mb-2"
+                    >
+                        20+
+                    </div>
+                    <div
+                        class="text-sm tracking-widest uppercase text-gray-600"
+                    >
+                        Years Experience
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="text-6xl md:text-7xl font-display font-bold mb-2"
+                    >
+                        500+
+                    </div>
+                    <div
+                        class="text-sm tracking-widest uppercase text-gray-600"
+                    >
+                        Projects Delivered
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div
+                        class="text-6xl md:text-7xl font-display font-bold mb-2"
+                    >
+                        98%
+                    </div>
+                    <div
+                        class="text-sm tracking-widest uppercase text-gray-600"
+                    >
+                        Client Satisfaction
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Talent Preview -->
+    <section class="section-padding bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <h2 class="heading-lg">
+                    FEATURED<br />TALENT
+                </h2>
+                <a
+                    href="/talent"
+                    class="btn text-white border-white hover:bg-white hover:text-black"
+                >
+                    View All
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Talent Card 1 -->
+                <a href="/talent/sophia-chen" class="group reveal">
+                    <div class="img-hover-container aspect-[3/4] mb-6">
+                        <img
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80"
+                            alt="Sophia Chen"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <h3
+                        class="text-2xl font-display font-bold mb-2 group-hover:text-accent transition-colors"
+                    >
+                        Sophia Chen
+                    </h3>
+                    <p class="text-sm tracking-widest uppercase text-gray-400">
+                        Actor / Director
+                    </p>
+                </a>
+
+                <!-- Talent Card 2 -->
+                <a
+                    href="/talent/marcus-williams"
+                    class="group reveal"
+                    style="animation-delay: 0.1s;"
+                >
+                    <div class="img-hover-container aspect-[3/4] mb-6">
+                        <img
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80"
+                            alt="Marcus Williams"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <h3
+                        class="text-2xl font-display font-bold mb-2 group-hover:text-accent transition-colors"
+                    >
+                        Marcus Williams
+                    </h3>
+                    <p class="text-sm tracking-widest uppercase text-gray-400">
+                        Model / Creative
+                    </p>
+                </a>
+
+                <!-- Talent Card 3 -->
+                <a
+                    href="/talent/elena-rodriguez"
+                    class="group reveal"
+                    style="animation-delay: 0.2s;"
+                >
+                    <div class="img-hover-container aspect-[3/4] mb-6">
+                        <img
+                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80"
+                            alt="Elena Rodriguez"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <h3
+                        class="text-2xl font-display font-bold mb-2 group-hover:text-accent transition-colors"
+                    >
+                        Elena Rodriguez
+                    </h3>
+                    <p class="text-sm tracking-widest uppercase text-gray-400">
+                        Photographer / Visual Artist
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Marquee -->
+    <section class="py-20 border-y border-gray-200 overflow-hidden">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >TALENT MANAGEMENT</span
+                >
+                <span
+                    class="text-6xl md:text-8xl font-display font-bold text-accent"
+                    >•</span
+                >
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >BRAND PARTNERSHIPS</span
+                >
+                <span
+                    class="text-6xl md:text-8xl font-display font-bold text-accent"
+                    >•</span
+                >
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >CREATIVE DIRECTION</span
+                >
+                <span class="text-6xl md:text-8xl font-bold text-accent">•</span
+                >
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >TALENT MANAGEMENT</span
+                >
+                <span
+                    class="text-6xl md:text-8xl font-display font-bold text-accent"
+                    >•</span
+                >
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >BRAND PARTNERSHIPS</span
+                >
+                <span
+                    class="text-6xl md:text-8xl font-display font-bold text-accent"
+                    >•</span
+                >
+                <span class="text-6xl md:text-8xl font-display font-bold"
+                    >CREATIVE DIRECTION</span
+                >
+                <span
+                    class="text-6xl md:text-8xl font-display font-bold text-accent"
+                    >•</span
+                >
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="heading-lg mb-8">
+                LET'S CREATE<br />SOMETHING EXCEPTIONAL
+            </h2>
+            <p class="text-body text-gray-700 mb-12 max-w-2xl mx-auto">
+                Whether you're an artist seeking representation or a brand
+                looking for exceptional talent, we'd love to hear from you.
+            </p>
+            <a href="/contact" class="btn btn-accent"> Get in Touch </a>
+        </div>
+    </section>
+
+    <!-- GSAP Animations -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero text animation
+        gsap.from("h1", {
+            y: 100,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            delay: 0.3,
+        });
+
+        // Parallax effect on hero image
+        gsap.to(".hero-image", {
+            yPercent: 50,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        // Stagger animation for talent cards
+        gsap.from(".group", {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".group",
+                start: "top 80%",
+            },
+        });
+    </script>
+</Layout>
