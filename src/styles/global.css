@@ -251,12 +251,3 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-
-/* Fix hero image on mobile viewport resize */
-@media (max-width: 767px) {
-    .fixed-mobile {
-        height: 100vh !important;
-        height: 100dvh !important;
-        object-fit: cover !important;
-    }
-}
